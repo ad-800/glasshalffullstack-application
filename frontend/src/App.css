@@ -1,0 +1,36 @@
+.App {
+  background-color: #E9E3D1;
+  height: 100vh;
+}
+
+.checkmark {
+  padding: 10px;
+  margin-left: 5px;
+}
+
+.table-heading-green {
+  background-color: #198754;
+  color: white;
+}
+
+.tasktable {
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notasks {
+  font-weight: bolder;
+}
+
+.trashbutton {
+  color: #E9E3D1;
+  font-size: 17px;
+}
+
+.penbutton {
+  font-size: 17px;
+}
