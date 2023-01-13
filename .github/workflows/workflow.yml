@@ -63,10 +63,6 @@ jobs:
     # TODO - what resources do we need for these tests?
     needs: build-backend
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
     # TODO debug
     - name: Check out Git repository
@@ -74,8 +70,8 @@ jobs:
 
     - name: Install Node
       uses: actions/setup-node@v3
-    - name: Install dependencies
-      run: npm install
+    # - name: Install dependencies
+    #   run: npm install
     - name: Install newman
       run: |
         npm install -g newman
