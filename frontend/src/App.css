@@ -1,6 +1,6 @@
 .App {
   background-color: #E9E3D1;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .checkmark {
