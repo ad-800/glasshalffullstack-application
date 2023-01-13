@@ -82,7 +82,7 @@ jobs:
     
     - name: Run the API and Postman Collection
       run: | 
-        newman run /Users/bradleygoldsmith/Desktop/Strategio/final-proj/glasshalffullstack-application/api/src/backend_tests_postman.json -r htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html --reporter-htmlextra-darkTheme > testArtifacts/reunreport.html
+        newman run /api/src/backend_tests_postman.json -r htmlextra --reporter-htmlextra-export testArtifacts/htmlreport.html --reporter-htmlextra-darkTheme > testArtifacts/reunreport.html
     # Upload the contents of Test Artifacts dir to workspace
     - name: Output the test result details
       uses: actions/upload-artifact@v2
