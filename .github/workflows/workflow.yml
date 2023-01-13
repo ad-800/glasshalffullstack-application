@@ -36,10 +36,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 17 # TODO - what node version?
-    - run: cd api # TODO - this, i do not like this. we need to bc npm cannot see package-lock when running npm ci
-    - run: npm ci
-    - run: npm test
-    - run: cd .. # TODO see line 39
+    - name: Install and test with Node
+      working-directory: ./frontend
+      run: |
+        npm ci
+        npm test
   
   test-backend-gradle:
     runs-on: ubuntu-latest
