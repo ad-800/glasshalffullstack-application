@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out Git repositor
+    - name: Check out Git repository
       uses: actions/checkout@v3
 
     - name: Set up JDK 17
@@ -30,12 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-backend
     steps:
-    - name: Check out Git repositor
+    - name: Check out Git repository
       uses: actions/checkout@v3
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
-        node-version: 16 # TODO - what node version?
+        node-version: 17 # TODO - what node version?
+    - run: npm init
     - run: npm ci
     - run: npm test
   
@@ -58,7 +59,7 @@ jobs:
 
     steps:
     # TODO 
-    - name: Check out Git repositor
+    - name: Check out Git repository
       uses: actions/checkout@v3
 
     - name: Install dependencies
