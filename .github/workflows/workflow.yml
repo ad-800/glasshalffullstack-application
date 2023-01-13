@@ -9,7 +9,6 @@ on:
 jobs:
   build-backend:
     runs-on: ubuntu-latest
-
     steps:
     - name: Check out Git repository
       uses: actions/checkout@v3
@@ -25,6 +24,7 @@ jobs:
       with: 
         arguments: build
         build-root-directory: api/
+
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -42,6 +42,7 @@ jobs:
         npm ci
         npm test
   
+  
   test-backend-gradle:
     runs-on: ubuntu-latest
     needs: [build-backend, build-frontend]
@@ -49,8 +50,10 @@ jobs:
     - name: Check out Git repositor
       uses: actions/checkout@v3
     - name: Testing with Gradlew
+      working-directory: api/
       run: gradle test
     
+
   test-backend-newman:
     # TODO - what resources do we need for these tests?
     needs: build-backend
