@@ -8,6 +8,7 @@ COPY . .
 
 RUN npm run build
 
+### IMPORTANT
 # create the image:
 #   docker build -t frontend .
 
