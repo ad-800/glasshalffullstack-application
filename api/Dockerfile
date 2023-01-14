@@ -9,7 +9,7 @@ RUN gradle build --no-daemon
 # the above step takes very very long. now it only takes long (220s)
 RUN echo Hello I finished with build
 
-FROM openjdk:8-jre-slim
+FROM openjdk:17-alpine3.14
 
 EXPOSE 8080
 
@@ -18,6 +18,10 @@ RUN mkdir /app
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
 
 ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
+
+# DEBUG mismatching JRE and JDK
+# Compiled by Java SE 17 = 61, Java runtime recognizes Java SE 8 = 52,
+# solution: change JRE to match JDK
 
 ### IMPORTANT
 # when building: must include --platform linux/x86_64/v8 flag if using a mac with M1 or M2 chip
