@@ -17,13 +17,22 @@ RUN mkdir /app
 # maybe: should be /home/.gradle/src/build/libs/*.jar
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-jar","/app/spring-boot-application.jar"]
+# ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
 
 # DEBUG mismatching JRE and JDK
 # Compiled by Java SE 17 = 61, Java runtime recognizes Java SE 8 = 52,
 # solution: change JRE to match JDK
 
 ### IMPORTANT
+### sunday update:
+# bradleygoldsmith@Bradleys-MacBook-Air api % docker run --platform linux/x86_64/v8 -it -p 3001:3000 backend sh
+# Unrecognized VM option 'UseCGroupMemoryLimitForHeap'
+# Error: Could not create the Java Virtual Machine.
+# Error: A fatal exception has occurred. Program will exit.
+# need -jar flag for sure,....,
+
+
 # when building: must include --platform linux/x86_64/v8 flag if using a mac with M1 or M2 chip
 # likewise when running the image from a mac with M1 or M2 chip
 # build:
